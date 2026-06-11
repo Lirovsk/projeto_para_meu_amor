@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para melhorar seu dia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <link rel="stylesheet" href="../static/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+</head>
+<body>
+    <header>
+        <h1>Minha Mensagem Diária</h1>
+    </header>
+
+    <main>
+        
+        <div id="input-container">
+            <h1 class="title">Bom dia, meu amor!</h1>
+            <div id="get-container">
+                <h2>Deseja ver a mensagem do dia?</h2>
+                <button id="GetMessage" onclick="showMessage()">Clique para revelar meu amor</button>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 João Vítor Lira. Todos o amor reservado para você.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+</body>
+</html>
