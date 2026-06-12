@@ -41,7 +41,6 @@ class MessageCRUD:
         for line in results:
             response["messages"].append({"id":line.id, "content":line.content})
         
-        print(response)
         
         return response, 200
     

@@ -91,8 +91,18 @@ async function showMessage() {
 
         <div id="seen-container">
             <ul id="seen-list">
-                <li><button class="seen" onclick="showSeenMessages()">Ver mensagens vistas anteriormente</button></li>
-                <li><button class="seen" onclick="showSeenMusics()">Ver Músicas vistas anteriormente</button></li>
+                <li>
+                    <button class="seen" onclick="showSeenMessages()">Ver mensagens vistas anteriormente</button>
+                    <ul class="seen-list" id="seen-messages-list">
+
+                    </ul>
+                </li>
+                <li>
+                    <button class="seen" onclick="showSeenMusics()">Ver Músicas vistas anteriormente</button>
+                    <ul class="seen-list" id="seen-musics-list">
+
+                    </ul>
+                </li>
             </ul>
         </div>
         <br> <br> <br>
@@ -115,10 +125,16 @@ async function showSeenMessages() {
             return "No seen messages found in the database.";
     } else {
         let lista = await response.json();
-        console.log(lista);
+        const seenMessagesList = document.getElementById("seen-messages-list");
+        const fragment = document.createDocumentFragment();
+
         for (const file of lista.messages) {
-            console.log(file.content);
+            const li = document.createElement("li");
+
+            li.textContent = file.content;
+            fragment.appendChild(li);
         }
+        seenMessagesList.appendChild(fragment);
         return lista;
     }
 }
@@ -133,12 +149,21 @@ async function showSeenMusics() {
             return "No seen musics in the database.";
         }
     } else {
-        
+        const seenMusicsList = document.getElementById("seen-musics-list");
+        const fragment = document.createDocumentFragment();
         let lista = await response.json();
-        console.log(lista);
+
         for (const file of lista.musics) {
-            console.log(file.url);
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = file.url;
+            a.target = "_blanket";
+            a.textContent = file.url;
+            li.appendChild(a);
+;
+            fragment.appendChild(li);
         }
+        seenMusicsList.appendChild(fragment);
         return lista;
     }
 }
